@@ -1,11 +1,2 @@
-﻿  TicTacToeView.cpp
-  TicTacToeMove.cpp
-  TicTacToeBoard.cpp
-  OthelloView.cpp
-  OthelloMove.cpp
-c:\users\ssh\documents\visual studio 2015\projects\boardgameframework\boardgameframework\othellomove.cpp(31): warning C4018: '<': signed/unsigned mismatch
-  OthelloBoard.cpp
-  main.cpp
-  GameView.cpp
-  Generating Code...
+﻿  GameView.cpp
   BoardGameFramework.vcxproj -> c:\users\ssh\documents\visual studio 2015\Projects\BoardGameFramework\Debug\BoardGameFramework.exe

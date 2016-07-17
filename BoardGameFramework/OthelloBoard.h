@@ -61,7 +61,7 @@ public:
    
    // Returns true if the game is finished.
    virtual bool IsFinished() const {
-      return mPassCount == 2;
+      return mPassCount == MAX_PASS_COUNT;
    }
    
 private:
