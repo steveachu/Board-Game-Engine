@@ -35,3 +35,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# VISUAL STUDIO FILES #
+#######################
+*.VC
+*.sln
