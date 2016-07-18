@@ -3,9 +3,12 @@ A framework for 2-player board games written in C++.
 <br><br>
 Uses the Model-View-Control pattern to organize code.
 <br><br>
-Two games are already implemented using the pattern as examples: <b>Othello</b> (also known as Reversi), and <b>Tic-Tac-Toe</b>. The games are seletable through a text menu.
+Two games are already implemented using the pattern as examples: <b>Othello</b> (also known as Reversi), and <b>Tic-Tac-Toe</b>. 
+The games are seletable through a text menu.
 <br><br>
 <img src = http://i.imgur.com/SLXHUro.png>
+<br>
+<i>Pictured Above: Running Othello from the framework</i>
 <br><br>
 The UI is all text-based through the console. These are the list of valid commands:
 
