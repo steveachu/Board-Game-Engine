@@ -16,3 +16,9 @@ The UI is all text-based through the console. These are the list of valid comman
   <li>showHistory -- Shows the history of moves made in the current game (most recent move first).</li>
   <li>quit -- Quit the game.</li>
 </ul>
+<br>
+<b>Developers</b>
+<br>
+Any game that uses this framework must inherit from the base classes. The base classes start with "Game", such as "GameBoard.cpp" and "GameView.cpp".
+<br>
+It is important to note that this framework follows the Model-View-Controller pattern to separate code. The model is the GameBoard, the view is the GameView, and the controller is the main class.
