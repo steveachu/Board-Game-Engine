@@ -16,32 +16,45 @@ using namespace std;
 const int COMMAND_LENGTH = 5;
 const int PLAYER_1 = 1;
 const int PLAYER_2 = -1;
+const int OTHELLO = 1;
+const int TICTACTOE = 2;
 
 int main(int argc, char* argv[]) {
    // Initialization
-   GameBoard *board; // The state of the game board.
-   GameView *v; // A View for outputting the board via operator<<
+   GameBoard *board = NULL; // The state of the game board.
+   GameView *v = NULL; // A View for outputting the board via operator<<
    string userInput; // a string to hold the user's command choice
    vector<GameMove *> possMoves; // a holder for possible moves
+   
+   
    int gameChoice;
+   bool isInvalidGameChoice = true;
    
-   // Main menu options
-   cout << "What game do you want to play?" << endl;
-   cout << "(1) Othello" << endl;
-   cout << "(2) Tic-Tac-Toe" << endl;
-   cin >> gameChoice;
-   cin.ignore();
-   
-   // Decide which game to play
-   if (gameChoice == 1) {
-      board = new OthelloBoard();
-      v = new OthelloView(board);
-   }
-   else {
-      board = new TicTacToeBoard();
-      v = new TicTacToeView(board);
-   }
-   
+   // TODO: Fix parsing. If a character is entered, an infinite loop happens. Works fine with invalid integers though.
+   do {
+	   // Main menu options
+	   cout << "What game do you want to play?" << endl;
+	   cout << "(1) Othello" << endl;
+	   cout << "(2) Tic-Tac-Toe" << endl;
+	   cin >> gameChoice;
+	   cin.ignore();
+
+	   // Decide which game to play
+	   if (gameChoice == OTHELLO) {
+		   board = new OthelloBoard();
+		   v = new OthelloView(board);
+		   isInvalidGameChoice = false;
+	   }
+	   else if (gameChoice == TICTACTOE) {
+		   board = new TicTacToeBoard();
+		   v = new TicTacToeView(board);
+		   isInvalidGameChoice = false;
+	   }
+	   else {
+		   isInvalidGameChoice = true;
+	   }
+   } while (isInvalidGameChoice);
+
    // Print the game board.
    cout << *v;
    
@@ -140,6 +153,7 @@ int main(int argc, char* argv[]) {
          // Command: showHistory
          else if (userInput == "showHistory") {
             // Show move history in reverse order (most recent first).
+			 // Moves are extracted out of the vector of GameMoves using an iterator
             char prevTurn = board->GetNextPlayer() * SWITCH_PLAYER;
             for (vector<GameMove *>::const_reverse_iterator rit =
                  board->GetMoveHistory()->rbegin();
@@ -153,6 +167,14 @@ int main(int argc, char* argv[]) {
                prevTurn *= SWITCH_PLAYER;
             }
          }
+		 else if (userInput == "help") {
+			 cout << "Valid commands:" << endl;
+			 cout << "move (x, y) -- Place a piece at coordinate (x, y)" << endl;
+			 cout << "undo x -- Undoes the game board state x amount of turns." << endl;
+			 cout << "showHistory -- Shows the history of moves made, with the most recent move on top." << endl;
+			 cout << "showValue -- Shows the value of pieces on the game board. (Possibly used to implement AI in the future)" << endl;
+			 cout << "help -- Displays the list of valid commands." << endl;
+		 }
          // Command: quit
          else if (userInput == "quit") {
             cout << "Good-bye." << endl;
@@ -160,7 +182,7 @@ int main(int argc, char* argv[]) {
          }
          // Command: Invalid command.
          else {
-            throw GameException("Invalid move!!! \n");
+            throw GameException("Invalid move! Please enter a valid move, or type \"help\" for a list of commands. \n");
          }
          
          // Print the game board.
