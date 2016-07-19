@@ -1,3 +1,13 @@
+/*
+Written by Steve Hong
+
+TODO LIST:
+-Error checking for main menu (COMPLETED 7/19/2016)
+-Add a way to exit a game back to the main menu
+-Modularize the main menu a bit?
+-Add AI using min-max algorithm
+*/
+
 #include "GameExceptions.h"
 #include "OthelloBoard.h"
 #include "OthelloView.h"
@@ -26,38 +36,54 @@ int main(int argc, char* argv[]) {
    string userInput; // a string to hold the user's command choice
    vector<GameMove *> possMoves; // a holder for possible moves
    
-   
    int gameChoice;
-   bool isInvalidGameChoice = true;
-   
-   // TODO: Fix parsing. If a character is entered, an infinite loop happens. Works fine with invalid integers though.
+
    do {
 	   // Main menu options
 	   cout << "What game do you want to play?" << endl;
 	   cout << "(1) Othello" << endl;
 	   cout << "(2) Tic-Tac-Toe" << endl;
-	   cin >> gameChoice;
-	   cin.ignore();
+
+	   // This while loop block of code is used to ignore characters entered into the selection menu
+	   // It also clears the cin stream
+	   while (!(cin >> gameChoice)) {
+		   cout << "Invalid choice. Please select a game from the list. \n";
+		   cin.clear();
+
+		   // This line ignores input up until '\n' or EOF (whichever comes first)
+		   // '\n' is the delimiter -- the character after which cin stops ignoring
+		   // numeric_limits<streamsize>::max() sets the max number of characters to ignore.
+		   // This is the upper limit on the size of a stream, so this line there is no limit of chars to ignore
+		   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		   // Main menu options
+		   cout << "What game do you want to play?" << endl;
+		   cout << "(1) Othello" << endl;
+		   cout << "(2) Tic-Tac-Toe" << endl;
+	   }
 
 	   // Decide which game to play
-	   if (gameChoice == OTHELLO) {
+	   if (gameChoice < 0) {
+		   cout << "Invalid selection. Please select a game from the list." << endl;
+		   gameChoice = -1; // Reset game choice to loop again
+	   }
+	   else if (gameChoice == OTHELLO) {
 		   board = new OthelloBoard();
 		   v = new OthelloView(board);
-		   isInvalidGameChoice = false;
 	   }
 	   else if (gameChoice == TICTACTOE) {
 		   board = new TicTacToeBoard();
 		   v = new TicTacToeView(board);
-		   isInvalidGameChoice = false;
 	   }
 	   else {
-		   isInvalidGameChoice = true;
+		   cout << "Invalid choice. Please select a game from the list." << endl;
+		   gameChoice = -1; // Reset game choice to loop again
 	   }
-   } while (isInvalidGameChoice);
+   } while (gameChoice < 0); // Game will keep asking for input until a valid choice is selected.
 
-   // Print the game board.
-   cout << *v;
-   
+
+	// Print the game board.
+	cout << *v;
    // Main game loop
    do {
       // Print all possible moves
