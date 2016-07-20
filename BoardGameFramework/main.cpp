@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) {
    vector<GameMove *> possMoves; // a holder for possible moves
    
    int gameChoice;
-
    do {
 	   // Main menu options
 	   cout << "What game do you want to play?" << endl;
@@ -129,7 +128,7 @@ int main(int argc, char* argv[]) {
             // See if the move is in GetPossibleMoves
             board->GetPossibleMoves(&possMoves);
             for (GameMove *m : possMoves) {
-               // Going through the list of moves
+               // Go through the list of moves
                // If user move is equal to a move in GetPossibleMoves
                // Then apply the move because it is a valid move.
                // Or if my move is a pass, then apply the move.
@@ -194,6 +193,7 @@ int main(int argc, char* argv[]) {
             }
          }
 		 else if (userInput == "help") {
+			 // List of commands that are currently implemented
 			 cout << "Valid commands:" << endl;
 			 cout << "move (x, y) -- Place a piece at coordinate (x, y)" << endl;
 			 cout << "undo x -- Undoes the game board state x amount of turns." << endl;
@@ -221,6 +221,7 @@ int main(int argc, char* argv[]) {
       }
    } while (!board->IsFinished());
    
+   // Determine the winner by getting the value of the board at the end of the game.
    if (board->GetValue() > 0) {
       cout << board->GetPlayerString(PLAYER_1) << " wins!" << endl;
    }
