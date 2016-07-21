@@ -81,10 +81,12 @@ int main(int argc, char* argv[]) {
    } while (gameChoice < 0); // Game will keep asking for input until a valid choice is selected.
 
 
-	// Print the game board.
-	cout << *v;
+
    // Main game loop
    do {
+	   // Print the game board.
+	   cout << *v;
+
       // Print all possible moves
       cout << "Possible moves: " << endl;
       board->GetPossibleMoves(&possMoves);
@@ -106,7 +108,11 @@ int main(int argc, char* argv[]) {
       
       // Get command from user
       cout << "Enter a command: ";
-      
+
+	  // Ignore the \n from previous cin >>
+	  // This was causing double printing at game start-up
+	  // because userInput would be an empty string
+	  cin.ignore();
       getline(cin, userInput);
       GameMove *move = nullptr;
       try {
@@ -210,9 +216,6 @@ int main(int argc, char* argv[]) {
          else {
             throw GameException("Invalid move! Please enter a valid move, or type \"help\" for a list of commands. \n");
          }
-         
-         // Print the game board.
-         cout << *v;
       }
       catch (GameException &exc) {
          // Delete the move if it was an invalid move.
