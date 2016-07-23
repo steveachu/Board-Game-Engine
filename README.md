@@ -21,6 +21,7 @@ The UI is all text-based through the console. These are the list of valid comman
   <li>showValue -- Shows the total value of pieces on the board.</li>
   <li>showHistory -- Shows the history of moves made in the current game (most recent move first).</li>
   <li>quit -- Quit the game.</li>
+  <li>help -- Display list of valid commands.</li>
 </ul>
 <br>
 <b>Developers</b>
