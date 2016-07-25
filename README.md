@@ -1,5 +1,5 @@
 # BoardGameFramework
-A framework for 2-player board games written in C++.
+A lightweight framework for 2-player board games written in C++.
 <br><br>
 Uses the Model-View-Control pattern to organize code.
 <br><br>
