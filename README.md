@@ -7,9 +7,9 @@ Two games are already implemented using the pattern as examples: <b>Othello</b> 
 <br>
 The games are seletable through a text menu.
 <br><br>
-<img src = http://i.imgur.com/SLXHUro.png>
+<center><img src = http://i.imgur.com/SLXHUro.png>
 <br>
-<i>Pictured Above: Running Othello from the framework</i>
+<i>Pictured Above: Running Othello from the framework</i></center>
 <br><br>
 The UI is all text-based through the console. These are the list of valid commands:
 
