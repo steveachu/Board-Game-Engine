@@ -1,7 +1,7 @@
 # BoardGameFramework
 A lightweight framework for 2-player board games written in C++.
 <br><br>
-Uses the Model-View-Control pattern to organize code.
+Designed using the Model-View-Control pattern to organize code.
 <br><br>
 Two games are already implemented using the pattern as examples: <b>Othello</b> (also known as Reversi), and <b>Tic-Tac-Toe</b>. 
 <br>
