@@ -12,6 +12,10 @@ OthelloBoard::OthelloBoard() : GameBoard(), mBoard() {
    mBoard[INITIAL_PIECE2][INITIAL_PIECE] = BLACK;
 }
 
+// This method first checks if the move is a pass
+// If not a pass, then the 8 squares around each piece is checked.
+// If the attempted move is valid, the move is applied accordingly.
+
 void OthelloBoard::ApplyMove(GameMove *move) {
    OthelloMove* m = (OthelloMove*)move;
    
