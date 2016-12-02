@@ -24,10 +24,13 @@ TicTacToeMove& TicTacToeMove::operator=(const TicTacToeMove &rhs) {
 }
 
 GameMove& TicTacToeMove::operator=(const std::string &rhs) {
+   // This method takes in user input and checks if it
+   // it is a valid move.
    istringstream is(rhs);
    char temp;
    is >> temp >> mRow >> temp >> mCol >> temp;
    
+   // Throw an exception if move is invalid
    if (!TicTacToeBoard::InBounds(mRow, mCol)) {
       throw TicTacToeException("Invalid move!");
    }
