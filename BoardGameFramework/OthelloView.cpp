@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// This function will print out the gameboard
 void OthelloView::PrintBoard(ostream &s) const{
    s << "- ";
    for (int i = 0; i < BOARD_SIZE; i++) {
