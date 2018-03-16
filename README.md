@@ -1,5 +1,5 @@
-# BoardGameFramework
-A lightweight framework for 2-player board games written in C++.
+# Board Game Engine
+A lightweight game engine for to implement turn-based board games in C++.
 <br><br>
 Designed using the Model-View-Control pattern to organize code.
 <br><br>
